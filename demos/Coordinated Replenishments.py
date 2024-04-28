@@ -2,13 +2,13 @@ from pywebio.input import *
 from pywebio.output import *
 import math
 
-def calculate_eoq(info):
+def calculate_Teoq(info):
     A = info['major_cost']
     D = info['demand_rate']
     v = info['variable_cost']
     r = info['carrying_charge']
 
-    eoq = math.sqrt((2 * A * D) / (v * r))
+    Teoq = math.sqrt((2 * A ) / (v * r * D))
 
     # Create a table to display inputs and result
     input_table = [
@@ -17,7 +17,7 @@ def calculate_eoq(info):
         ["Demand rate (units per time unit)", D],
         ["Unit variable cost ($/unit)", v],
         ["Carrying charge per unit of inventory per time unit ($/time unit)", r],
-        ["Economic Order Quantity (EOQ)", eoq],
+        ["Economic Order Quantity as a Time Supply", Teoq],
     ]
     put_table(input_table)
 
@@ -31,4 +31,4 @@ if __name__ == "__main__":
             input("Carrying charge per unit of inventory per time unit ($/time unit)", name="carrying_charge", type=FLOAT),
         ]
     )
-    calculate_eoq(info)
+    calculate_Teoq(info)
